@@ -2,9 +2,12 @@ test: env
 	env/bin/test
 
 fresh: clean env
+	env/bin/test
 
 env: .virtualenv
 	python3 .virtualenv/source/virtualenv.py env
+	env/bin/pip install setuptools-rust
+	env/bin/pip install -e ../tmrs
 	env/bin/pip install ipdb
 	env/bin/pip install -e ../tmpy
 	env/bin/pip install -e .

@@ -4,6 +4,7 @@ from timeit import timeit
 
 from tmpy import solve as py_solve
 from tmpy import check_convergence
+from tmrs import solve as rs_solve
 
 
 def get_data():
@@ -27,3 +28,7 @@ def main():
     time = timeit('bench.py_solve(a, b, c, v)',
                   setup='import bench; a, b, c, v = bench.get_data()')
     print_time("Python", time)
+    assert list(rs_solve(a, b, c, v)) == [2, 3, 5, 7]
+    time = timeit('bench.rs_solve(a, b, c, v)',
+                  setup='import bench; a, b, c, v = bench.get_data()')
+    print_time("Rust", time)

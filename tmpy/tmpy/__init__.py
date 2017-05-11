@@ -16,17 +16,18 @@ def solve(ma, mb, mc, v):
     +   v – vektorius, rėžis: [0, len(v)-1]
     """
 
-    c = zeros(len(v))
-    d = zeros(len(v))
+    size = len(v)
+    c = zeros(size)
+    d = zeros(size)
     c[0] = -mc[0] / mb[0]
     d[0] = v[0] / mb[0]
-    for i in range(1, len(v)):
+    for i in range(1, size):
         divisor = ma[i] * c[i-1] + mb[i]
         c[i] = -mc[i] / divisor
         d[i] = (v[i] - ma[i] * d[i-1]) / divisor
-    result = zeros(len(v))
-    result[len(v)-1] = d[len(v)-1]
-    for i in range(len(v) - 2, -1, -1):
+    result = zeros(size)
+    result[size-1] = d[size-1]
+    for i in range(size - 2, -1, -1):
         result[i] = c[i] * result[i+1] + d[i]
     return result
 

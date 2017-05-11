@@ -1,0 +1,12 @@
+[package]
+name = "tmrs"
+version = "0.1.0"
+authors = []
+
+[lib]
+name = "tmrs"
+crate-type = ["cdylib"]
+
+[dependencies.cpython]
+version = "0.1"
+features = ["extension-module"]

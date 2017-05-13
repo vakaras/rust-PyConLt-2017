@@ -28,12 +28,12 @@ def get_data():
 
 
 size = 10000
-a = [random.uniform(-1, 1) for i in range(size)]
+a = array([random.uniform(-1, 1) for i in range(size)])
 a[0] = 0.0
-b = [random.uniform(2, 4) for i in range(size)]
-c = [random.uniform(-1, 1) for i in range(size)]
+b = array([random.uniform(2, 4) for i in range(size)])
+c = array([random.uniform(-1, 1) for i in range(size)])
 c[-1] = 0.0
-v = [random.uniform(-1, 1) for i in range(size)]
+v = array([random.uniform(-1, 1) for i in range(size)])
 
 
 def get_large_data():

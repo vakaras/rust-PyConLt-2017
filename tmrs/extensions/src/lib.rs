@@ -54,5 +54,16 @@ fn solve_py(_: Python, ma: Vec<f64>, mb: Vec<f64>, mc: Vec<f64>, v: Vec<f64>) ->
 }
 
 fn check_convergence_py(_: Python, ma: Vec<f64>, mb: Vec<f64>, mc: Vec<f64>, v: Vec<f64>) -> PyResult<bool> {
-    Ok(true)
+    assert!(ma.len() == v.len() && mb.len() == v.len() && mc.len() == v.len());
+    assert!(ma[0] == 0.0 && mc[v.len()-1] == 0.0);
+    let mut exists_condition = false;
+    let mut forall_condition = true;
+    for i in 0..v.len() {
+        let a = ma[i].abs();
+        let b = mb[i];
+        let c = mc[i].abs();
+        forall_condition = forall_condition && (b >= a + c);
+        exists_condition = exists_condition || (b > a + c);
+    }
+    Ok(forall_condition && exists_condition)
 }
